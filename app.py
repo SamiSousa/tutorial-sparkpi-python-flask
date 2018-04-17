@@ -10,6 +10,12 @@ app = Flask(__name__)
 
 def produce_pi(scale):
     spark = SparkSession.builder.appName("PythonPi").getOrCreate()
+    spark.storage.memoryFraction = 0.8
+    spark.cores.max = 1
+    spark.executor.memory = 512
+
+    spark.default.parallelism = 10
+
     n = 100000 * scale
 
     def f(_):
