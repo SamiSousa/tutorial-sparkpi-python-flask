@@ -14,7 +14,7 @@ def produce_pi(scale):
     spark = SparkSession.builder.appName("PythonPi").getOrCreate()
     spark.sparkContext._conf.getAll()
 
-    conf = SparkConf().setAll([('spark.executor.memory', '512'), ('spark.executor.cores', '1'), ('spark.cores.max', '1'), ('spark.storage.memoryFraction','0.8'), ('spark.default.parallelism','10')])
+    conf = SparkConf().setAll([('spark.executor.cores', '1'), ('spark.cores.max', '1'), ('spark.default.parallelism','84')])
     spark.stop()
     spark = SparkSession.builder.appName("PythonPi").config(conf=conf).getOrCreate()
     spark.sparkContext._conf.getAll()
